@@ -109,7 +109,8 @@ class SiameseNetworkDataset(Dataset):
 
         else:
             img_lbl0 = rd.choice(self.imageFolderDataset.imgs)
-
+            
+            # We need to balance the pairs with Few-SHot class
             if self.fs_class > 0 and img_lbl0[1] != self.fs_class and rd.uniform(0,1) < 0.17:
                 while img_lbl0[1] != self.fs_class:
                     img_lbl0 = rd.choice(self.imageFolderDataset.imgs)
